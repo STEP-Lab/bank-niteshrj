@@ -35,4 +35,10 @@ public class AccountTest {
     public void checkCredit() {
         assertThat(account.credit(5000),is(6000));
     }
+
+    @Test
+    public void checkDebit() {
+        account.credit(5000);
+        assertThat(account.debit(4000),is(2000));
+    }
 }
