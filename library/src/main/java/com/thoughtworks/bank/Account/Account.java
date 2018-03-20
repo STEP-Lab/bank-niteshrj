@@ -2,7 +2,7 @@ package com.thoughtworks.bank.Account;
 
 public class Account {
     private final String accountNumber;
-    private final int balance;
+    private int balance;
 
     public Account(String accountNumber, int balance) throws MinimumBalanceException {
         this.accountNumber = accountNumber;
@@ -18,5 +18,10 @@ public class Account {
 
     public String getAccountNumber() {
         return accountNumber;
+    }
+
+    public int credit(int amount) {
+        this.balance += amount;
+        return this.balance;
     }
 }

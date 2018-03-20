@@ -30,4 +30,9 @@ public class AccountTest {
     public void checkMinimumBalance() throws MinimumBalanceException {
         new Account("1234",900);
     }
+
+    @Test
+    public void checkCredit() {
+        assertThat(account.credit(5000),is(6000));
+    }
 }
