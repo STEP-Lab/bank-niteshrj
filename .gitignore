@@ -1,4 +1,5 @@
 build/
+.idea/
 .settings/
 .vscode/
 gradle/
@@ -6,6 +7,5 @@ gradlew
 gradlew.bat
 .gradle
 .project
-.idea/
 *.iml
 out/
