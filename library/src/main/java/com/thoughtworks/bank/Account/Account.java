@@ -5,10 +5,8 @@ public class Account {
     private int balance;
 
     public Account(String accountNumber, int balance) throws MinimumBalanceException {
+        throwInsufficientBalanceException(balance);
         this.accountNumber = accountNumber;
-        if(balance<1000) {
-           throw new MinimumBalanceException();
-        }
         this.balance = balance;
     }
 
@@ -25,8 +23,14 @@ public class Account {
         return this.balance;
     }
 
-    public int debit(int amount) {
+    public int debit(int amount) throws MinimumBalanceException {
+        throwInsufficientBalanceException(this.balance-amount);
         this.balance -= amount;
         return this.balance;
+    }
+    public void throwInsufficientBalanceException(int balance) throws MinimumBalanceException {
+        if(balance<1000) {
+            throw new MinimumBalanceException();
+        }
     }
 }
