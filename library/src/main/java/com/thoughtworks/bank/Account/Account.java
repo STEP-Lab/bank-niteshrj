@@ -5,12 +5,14 @@ import java.util.regex.Pattern;
 
 public class Account {
     private final String accountNumber;
-    private int balance;
+    private final String name;
+    private double balance;
 
-    public Account(String accountNumber, int balance) throws MinimumBalanceException, InvalidAccountNumberException {
+    public Account(String accountNumber,String name, int balance) throws MinimumBalanceException, InvalidAccountNumberException {
         throwInsufficientBalanceException(balance);
         throwInvalidAccountNumberException(accountNumber);
         this.accountNumber = accountNumber;
+        this.name = name;
         this.balance = balance;
     }
     private void throwInvalidAccountNumberException(String accountNumber) throws InvalidAccountNumberException {
@@ -22,7 +24,7 @@ public class Account {
         }
     }
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 
@@ -30,19 +32,23 @@ public class Account {
         return accountNumber;
     }
 
-    public int credit(int amount) {
+    public double credit(int amount) {
         this.balance += amount;
         return this.balance;
     }
 
-    public int debit(int amount) throws MinimumBalanceException {
+    public double debit(int amount) throws MinimumBalanceException {
         throwInsufficientBalanceException(this.balance-amount);
         this.balance -= amount;
         return this.balance;
     }
-    public void throwInsufficientBalanceException(int balance) throws MinimumBalanceException {
+    public void throwInsufficientBalanceException(double balance) throws MinimumBalanceException {
         if(balance<1000) {
             throw new MinimumBalanceException();
         }
+    }
+
+    public Summary getSummary() {
+        return new Summary(name, accountNumber, balance);
     }
 }
