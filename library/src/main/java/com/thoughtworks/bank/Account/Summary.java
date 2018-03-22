@@ -2,10 +2,10 @@ package com.thoughtworks.bank.Account;
 
 public class Summary {
     private final String name;
-    private final String accountNumber;
+    private final AccountNumber accountNumber;
     private final double balance;
 
-    Summary(String name, String accountNumber, double balance) {
+    Summary(String name, AccountNumber accountNumber, double balance) {
         this.name = name;
         this.accountNumber = accountNumber;
         this.balance = balance;
@@ -15,7 +15,7 @@ public class Summary {
         return name;
     }
 
-    public String getAccountNumber() {
+    public AccountNumber getAccountNumber() {
         return accountNumber;
     }
 

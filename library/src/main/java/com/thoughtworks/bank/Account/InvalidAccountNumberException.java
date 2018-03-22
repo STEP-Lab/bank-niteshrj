@@ -5,3 +5,4 @@ public class InvalidAccountNumberException extends Throwable {
         super("Invalid account number");
     }
 }
+

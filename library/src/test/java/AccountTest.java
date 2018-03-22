@@ -1,7 +1,4 @@
-import com.thoughtworks.bank.Account.Account;
-import com.thoughtworks.bank.Account.InvalidAccountNumberException;
-import com.thoughtworks.bank.Account.MinimumBalanceException;
-import com.thoughtworks.bank.Account.Summary;
+import com.thoughtworks.bank.Account.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +11,7 @@ public class AccountTest {
 
     @Before
     public void setUp() throws Exception, MinimumBalanceException, InvalidAccountNumberException {
-        account = new Account("1234-5678","Nitesh Ranjan", 1000);
+        account = new Account(new AccountNumber("1234-5678"),"Nitesh Ranjan", 1000);
     }
 
     @Test
@@ -22,14 +19,9 @@ public class AccountTest {
         assertThat(account.getBalance(),is(1000.0));
     }
 
-    @Test
-    public void checkAccountNumber() {
-        assertThat(account.getAccountNumber(),is("1234-5678"));
-    }
-
     @Test(expected = MinimumBalanceException.class)
     public void checkMinimumBalance() throws MinimumBalanceException, InvalidAccountNumberException {
-        new Account("1234","Nitesh Ranjan",900);
+        new Account(new AccountNumber("1234-3456"),"Nitesh Ranjan",900);
     }
 
     @Test
@@ -46,26 +38,6 @@ public class AccountTest {
     @Test(expected = MinimumBalanceException.class)
     public void checkDebitForInsufficientBalance() throws MinimumBalanceException {
         account.debit(500);
-    }
-
-    @Test(expected = InvalidAccountNumberException.class)
-    public void checkForInvalidAccountNumberWithLessThan8Characters() throws MinimumBalanceException, InvalidAccountNumberException {
-        new Account("123-12","Nitesh Ranjan",1000);
-    }
-
-    @Test(expected = InvalidAccountNumberException.class)
-    public void checkForInvalidAccountNumberWithoutHyphen() throws MinimumBalanceException, InvalidAccountNumberException {
-        new Account("12345678","Nitesh Ranjan",1000);
-    }
-
-    @Test(expected = InvalidAccountNumberException.class)
-    public void checkForInvalidAccountNumberWithAlphabets() throws MinimumBalanceException, InvalidAccountNumberException {
-        new Account("1234-a678","Nitesh Ranjan",1000);
-    }
-
-    @Test(expected = InvalidAccountNumberException.class)
-    public void checkForInvalidAccountNumberWithSpecialCharacters() throws MinimumBalanceException, InvalidAccountNumberException {
-        new Account("12*4-&678","Nitesh Ranjan",1000);
     }
 
     @Test
