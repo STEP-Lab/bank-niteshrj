@@ -42,6 +42,6 @@ public class AccountTest {
 
     @Test
     public void getSummary() {
-        assertThat(account.getSummary(),is(Summary.class));
+        assertThat(account.getSummary() instanceof Summary,is(true));
     }
 }

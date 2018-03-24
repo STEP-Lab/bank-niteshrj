@@ -2,9 +2,8 @@ build/
 .idea/
 .settings/
 .vscode/
-gradle/
-gradlew
-gradlew.bat
+gradle
+!gradle-wrapper.jar
 .gradle
 .project
 *.iml
