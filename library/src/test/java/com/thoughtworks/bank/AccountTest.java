@@ -1,16 +1,19 @@
+package com.thoughtworks.bank;
+
 import com.thoughtworks.bank.Account.*;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class AccountTest {
 
     private Account account;
 
     @Before
-    public void setUp() throws Exception, MinimumBalanceException, InvalidAccountNumberException {
+    public void setUp() throws MinimumBalanceException, InvalidAccountNumberException {
         account = new Account(new AccountNumber("1234-5678"),"Nitesh Ranjan", 1000);
     }
 
@@ -42,6 +45,6 @@ public class AccountTest {
 
     @Test
     public void getSummary() {
-        assertThat(account.getSummary() instanceof Summary,is(true));
+        assertTrue(account.getSummary() != null);
     }
 }
