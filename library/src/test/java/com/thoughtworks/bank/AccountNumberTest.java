@@ -2,7 +2,6 @@ package com.thoughtworks.bank;
 
 import com.thoughtworks.bank.Account.AccountNumber;
 import com.thoughtworks.bank.Account.InvalidAccountNumberException;
-import com.thoughtworks.bank.Account.MinimumBalanceException;
 import org.junit.Test;
 
 public class AccountNumberTest {
